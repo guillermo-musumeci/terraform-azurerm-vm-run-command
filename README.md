@@ -1,7 +1,9 @@
 # Terraform AzureRM VM Run Command
 Execute commands in Linux and Windows machines
 
-Cloned from https://github.com/innovationnorway/terraform-azurerm-vm-run-command
+Updated to AzureRM v2.x
+
+Cloned from https://github.com/innovationnorway/terraform-azurerm-vm-run-command (AzureRM v1.x)
 
 -----------
 
@@ -15,9 +17,9 @@ Uses the VM agent to run PowerShell scripts (Windows) or shell scripts (Linux) w
 
 ```hcl
 module "run_command" {
-  source               = "innovationnorway/vm-run-command/azurerm"
+  source               = "guillermo-musumeci/terraform-azurerm-vm-run-command"
   resource_group_name  = "${azurerm_resource_group.main.name}"
-  virtual_machine_name = "${azurerm_virtual_machine.main.name}"
+  virtual_machine_id   = "${azurerm_virtual_machine.main.name}"
   os_type              = "linux"
 
   command = "apt-get install -y curl"
@@ -28,7 +30,7 @@ module "run_command" {
 
 ```hcl
 module "run_command" {
-  source               = "innovationnorway/vm-run-command/azurerm"
+  source               = "guillermo-musumeci/terraform-azurerm-vm-run-command"
   resource_group_name  = "${azurerm_resource_group.main.name}"
   virtual_machine_name = "${azurerm_virtual_machine.main.name}"
   os_type              = "windows"
@@ -41,7 +43,7 @@ module "run_command" {
 
 ```hcl
 module "run_command" {
-  source               = "innovationnorway/vm-run-command/azurerm"
+  source               = "guillermo-musumeci/terraform-azurerm-vm-run-command"
   resource_group_name  = "${azurerm_resource_group.main.name}"
   virtual_machine_name = "${azurerm_virtual_machine.main.name}"
   os_type              = "linux"
@@ -58,7 +60,7 @@ EOF
 
 ```hcl
 module "run_command" {
-  source               = "innovationnorway/vm-run-command/azurerm"
+  source               = "guillermo-musumeci/terraform-azurerm-vm-run-command"
   resource_group_name  = "${azurerm_resource_group.main.name}"
   virtual_machine_name = "${azurerm_virtual_machine.main.name}"
   os_type              = "windows"
@@ -76,7 +78,7 @@ EOF
 | Name | Type | Description |
 | --- | --- | --- |
 | `resource_group_name` | `string` | The name of the resource group. |
-| `virtual_machine_name` | `string` | The name of the virtual machine. |
+| `virtual_machine_id` | `string` | The id of the virtual machine. |
 | `os_type` | `string` | The name of the operating system. Possible values are: `linux` and `windows`. |
 | `command` | `string` | The command to be executed. |
 | `script` | `string` | The script to be executed. Either this or `command` should be specified, but not both. |
