@@ -1,6 +1,10 @@
 # Terraform AzureRM VM Run Command
 Execute commands in Linux and Windows machines
 
+Cloned from https://github.com/innovationnorway/terraform-azurerm-vm-run-command
+
+-----------
+
 # Run Commmand in Azure VM
 
 Uses the VM agent to run PowerShell scripts (Windows) or shell scripts (Linux) within an Azure VM. It can be used to bootstrap/install software or run administrative tasks.
@@ -78,6 +82,3 @@ EOF
 | `script` | `string` | The script to be executed. Either this or `command` should be specified, but not both. |
 | `file_uris` | `list` | List of URLs for files to be downloaded. |
 | `timestamp` | `string` | Change this value to trigger a rerun of the script. Any integer value is acceptable, it must only be different than the previous value. |
-
-
-Cloned from https://github.com/innovationnorway/terraform-azurerm-vm-run-command
